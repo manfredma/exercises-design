@@ -6,13 +6,13 @@
 
 本项目从 `manfredma/exercises` 拆分，对应原项目中以下模块：
 
-| 原模块               | 迁移目标模块               | 状态             |
-|----------------------|----------------------------|------------------|
-| `design-pattern/`    | `design-patterns/`         | 已完成           |
-| `arch-pattern/`      | `arch-patterns/`           | 已完成           |
-| `model_design/DDD/`  | `domain-modeling/ddd/`     | 已完成           |
-| `model_design/OO/`   | `domain-modeling/oo/`      | 待迁移（源无代码）|
-| `model_design/cqrs/` | `domain-modeling/cqrs/`    | 待迁移（源无代码）|
+| 原模块                  | 迁移目标模块                  | 状态        |
+|----------------------|-------------------------|-----------|
+| `design-pattern/`    | `design-patterns/`      | 已完成       |
+| `arch-pattern/`      | `arch-patterns/`        | 已完成       |
+| `model_design/DDD/`  | `domain-modeling/ddd/`  | 已完成       |
+| `model_design/OO/`   | `domain-modeling/oo/`   | 待迁移（源无代码） |
+| `model_design/cqrs/` | `domain-modeling/cqrs/` | 待迁移（源无代码） |
 
 ## 项目结构
 
