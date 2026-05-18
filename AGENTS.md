@@ -15,33 +15,47 @@
 
 ## Module Map
 
-### 设计模式（GoF 23 种）
-`design-patterns/creational` — 创建型：singleton、factory、abstract-factory、builder、prototype
-`design-patterns/structural` — 结构型：adapter、bridge、composite、decorator、facade、flyweight、proxy
-`design-patterns/behavioral` — 行为型：chain-of-responsibility、command、iterator、mediator、memento、observer、state、strategy、template、visitor
-`design-patterns/context-pattern` — Context 模式
+### design-patterns — GoF 设计模式
 
-### 架构模式
-`arch-patterns/dci` — DCI 架构（Data、Context、Interaction）
-`arch-patterns/layered` — 分层架构
-`arch-patterns/orthogonal` — 正交设计
+包结构：`manfred.exercises.design.<category>.<pattern>`
 
-### 领域建模
-`domain-modeling/ddd` — DDD 示例
-`domain-modeling/oo` — 面向对象设计
-`domain-modeling/cqrs` — CQRS 模式
+| 分类 | 包 | 模式 |
+|------|----|------|
+| 创建型 | `creational` | singleton（5种实现）、factory、abstractfactory |
+| 结构型 | `structural` | adapter（class/object）、bridge、composite、decorator、facade、filter、flyweight、proxy |
+| 行为型 | `behavioral` | chainofresponsibility、command、interpreter（含arithmetic子包）、iterator、mediator、memento、observer、state（含vote子包）、strategy、template、visitor（含bill子包） |
+| 其他 | `other` | blackboard（v1/v2）、businessdelegate、frontcontroller、mvc、typeobject |
+
+### arch-patterns — 架构模式
+
+包结构：`manfred.exercises.design.arch.<pattern>`
+
+| 包 | 内容 |
+|----|------|
+| `dci` | DCI 架构：context/domain/rolemap 三层，含测试 |
+| `layered` | 分层架构示例 |
+| `orthogonal` | 正交设计示例，含测试 |
+
+### domain-modeling — 领域建模
+
+包结构：`manfred.exercises.design.modeling.<topic>`
+
+| 包 | 内容 |
+|----|------|
+| `ddd` | DDD 示例入口（待扩充） |
+| `oo` | 面向对象设计（待迁移） |
+| `cqrs` | CQRS 模式（待迁移） |
 
 ## For AI Agents
 
 ### Working In This Directory
 
-- 包名格式：`manfred.exercises.design.<pattern>.<topic>`
+- 包名格式：`manfred.exercises.design.<category>.<pattern>`
 - 演示类命名：`XxxDemo`（有 main 方法）
 - 不在 `src/main/java` 中使用 `@Test` 注解
 - 所有 public 类必须有中文类级 Javadoc
 - 无 `@author`/`@date` 等元数据注释
 - 子模块 pom 不写 `<version>`，版本统一在根 pom 管理
-- 修改根 `pom.xml` 时，只操作 `<dependencyManagement>` 和 `<modules>` 节
 
 ### 包内分层规范
 
@@ -55,6 +69,7 @@ xxx.util/    ← 工具类
 ### Testing Requirements
 
 ```bash
+mvn clean compile -Dsort.skip=true
 mvn clean test -Dsort.skip=true
 mvn clean compile -pl design-patterns -Dsort.skip=true
 mvn clean compile -pl arch-patterns -Dsort.skip=true
@@ -65,12 +80,16 @@ mvn clean compile -pl domain-modeling -Dsort.skip=true
 
 - 父 POM 集中管理依赖版本，子模块按需引用无需写版本号
 - 测试框架：JUnit 4
-- 每个模式对应一个独立演示类 + 可选测试类
+- 每个模式对应一个独立演示类（`XxxPatternDemo`）+ 可选测试类
 
-## Dependencies
+## Dependencies（根 pom 管理）
 
-- `junit:junit:4.13.1` — 测试框架
-- `org.mockito:mockito-core:2.23.0` — Mock
-- `com.google.guava:guava:30.1-jre` — Guava 工具库
+| 依赖 | 版本 | 用途 |
+|------|------|------|
+| `junit:junit` | 4.13.1 | 测试框架（scope=test） |
+| `org.mockito:mockito-core` | 2.23.0 | Mock（scope=test） |
+| `org.apache.polygene.*` | 3.0.0 | DCI 架构框架（arch-patterns/dci） |
+| `org.ow2.asm:asm*` | 5.2 | Polygene 依赖 |
+| `org.apache.johnzon:johnzon-core` | 1.1.1 | Polygene 依赖 |
 
 <!-- MANUAL: -->

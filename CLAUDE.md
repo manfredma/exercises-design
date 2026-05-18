@@ -6,41 +6,36 @@
 
 本项目从 `manfredma/exercises` 拆分，对应原项目中以下模块：
 
-| 原模块 | 迁移目标模块 | 说明 |
+| 原模块 | 迁移目标模块 | 状态 |
 |--------|-------------|------|
-| `design-pattern/` | `design-patterns/` | GoF 23 种设计模式 |
-| `arch-pattern/` | `arch-patterns/` | DCI、分层架构、正交设计等架构模式 |
-| `model_design/` | `domain-modeling/` | DDD、OO、CQRS、四色建模等 |
-| `design-patterns/context-pattern/` | `design-patterns/context-pattern/` | Context 模式（已在 exercises 中重构完成） |
+| `design-pattern/` | `design-patterns/` | ✅ 已完成 |
+| `arch-pattern/` | `arch-patterns/` | ✅ 已完成 |
+| `model_design/DDD/` | `domain-modeling/ddd/` | ✅ 已完成 |
+| `model_design/OO/` | `domain-modeling/oo/` | 待迁移（源无代码） |
+| `model_design/cqrs/` | `domain-modeling/cqrs/` | 待迁移（源无代码） |
 
-参考仓库：`manfredma/exercises-java-core`（已完成迁移重构，可作为结构标准）
-
-## 目标项目结构
+## 项目结构
 
 ```
 exercises-design/
-├── pom.xml                    ← 父 POM
-├── design-patterns/           ← GoF 设计模式
-│   ├── creational/            ← 创建型（singleton、factory、builder 等）
-│   ├── structural/            ← 结构型（adapter、decorator、proxy 等）
-│   ├── behavioral/            ← 行为型（strategy、observer、visitor 等）
-│   └── context-pattern/       ← Context 模式（已有完整实现）
+├── pom.xml                    ← 父 POM，统一依赖版本管理
+├── design-patterns/           ← GoF 设计模式（207 个类）
+│   └── src/main/java/manfred/exercises/design/
+│       ├── creational/        ← 创建型：singleton/factory/abstractfactory
+│       ├── structural/        ← 结构型：adapter/bridge/composite/...
+│       ├── behavioral/        ← 行为型：strategy/observer/command/...
+│       └── other/             ← 其他：blackboard/mvc/typeobject/...
 ├── arch-patterns/             ← 架构模式
-│   ├── dci/                   ← DCI 架构
-│   ├── layered/               ← 分层架构
-│   └── orthogonal/            ← 正交设计
+│   └── src/main/java/manfred/exercises/design/arch/
+│       ├── dci/               ← DCI 架构（context/domain/rolemap）
+│       ├── layered/           ← 分层架构
+│       └── orthogonal/        ← 正交设计
 └── domain-modeling/           ← 领域建模
-    ├── ddd/                   ← DDD 示例
-    ├── oo/                    ← 面向对象设计
-    └── cqrs/                  ← CQRS 模式
+    └── src/main/java/manfred/exercises/design/modeling/
+        ├── ddd/               ← DDD 示例
+        ├── oo/                ← 面向对象设计（待扩充）
+        └── cqrs/              ← CQRS 模式（待扩充）
 ```
-
-## 迁移说明
-
-- 源仓库：`git@github.com:manfredma/exercises.git`
-- 源模块路径：`design-pattern/`、`arch-pattern/`、`model_design/`
-- 迁移原则：参考 `exercises-java-core` 的重构方式，按主题重新组织包结构
-- 包名格式：`manfred.exercises.design.<topic>`
 
 ## 包内分层规范
 
@@ -53,7 +48,7 @@ xxx.util/         ← 工具类
 
 ## 代码规范
 
-- 包名格式：`manfred.exercises.design.<pattern>.<topic>`
+- 包名格式：`manfred.exercises.design.<category>.<pattern>`
 - 演示类命名：`XxxDemo`（有 main 方法）
 - 不在 `src/main/java` 中使用 `@Test` 注解
 - 所有 public 类必须有中文类级 Javadoc
@@ -66,6 +61,8 @@ xxx.util/         ← 工具类
 mvn clean compile -Dsort.skip=true
 mvn clean test -Dsort.skip=true
 mvn clean compile -pl design-patterns -Dsort.skip=true
+mvn clean compile -pl arch-patterns -Dsort.skip=true
+mvn clean compile -pl domain-modeling -Dsort.skip=true
 ```
 
 ## 子模块 pom.xml 模板
@@ -82,5 +79,12 @@ mvn clean compile -pl design-patterns -Dsort.skip=true
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>my-module</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
 </project>
 ```
