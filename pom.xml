@@ -26,6 +26,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit4.version>4.13.1</junit4.version>
         <mockito.version>2.23.0</mockito.version>
+        <polygene.version>3.0.0</polygene.version>
+        <asm.version>5.2</asm.version>
+        <johnzon.version>1.1.1</johnzon.version>
     </properties>
 
     <dependencyManagement>
@@ -41,6 +44,48 @@
                 <artifactId>mockito-core</artifactId>
                 <version>${mockito.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <!-- Polygene DCI framework -->
+            <dependency>
+                <groupId>org.apache.polygene.core</groupId>
+                <artifactId>org.apache.polygene.core.api</artifactId>
+                <version>${polygene.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.polygene.core</groupId>
+                <artifactId>org.apache.polygene.core.runtime</artifactId>
+                <version>${polygene.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.polygene.core</groupId>
+                <artifactId>org.apache.polygene.core.testsupport</artifactId>
+                <version>${polygene.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.polygene.libraries</groupId>
+                <artifactId>org.apache.polygene.library.constraints</artifactId>
+                <version>${polygene.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm</artifactId>
+                <version>${asm.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm-util</artifactId>
+                <version>${asm.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ow2.asm</groupId>
+                <artifactId>asm-commons</artifactId>
+                <version>${asm.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.johnzon</groupId>
+                <artifactId>johnzon-core</artifactId>
+                <version>${johnzon.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

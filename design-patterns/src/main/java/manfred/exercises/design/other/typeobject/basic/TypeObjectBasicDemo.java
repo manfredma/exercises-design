@@ -4,7 +4,7 @@ package manfred.exercises.design.other.typeobject.basic;
  * 类型对象模式基础示例演示入口。
  * 展示多个 Videotape 实例共享同一个 Movie 类型对象，并分别租借给不同客户的场景。
  */
-public class Boot {
+public class TypeObjectBasicDemo {
     public static void main(String[] args) {
         Customer john = new Customer("John");
         Customer sue = new Customer("Sue");
