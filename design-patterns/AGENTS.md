@@ -5,32 +5,30 @@
 
 ## Purpose
 
-GoF 23 种设计模式练习，按创建型、结构型、行为型分子模块组织。
+GoF 23 种设计模式练习，用包结构区分创建型/结构型/行为型/Context 模式。
 
-## Key Files
+## Package Structure
 
-| File | Description |
-|------|-------------|
-| `pom.xml` | 聚合 POM，管理 creational/structural/behavioral/context-pattern |
-| `creational/` | 创建型模式：singleton、factory、abstract-factory、builder、prototype |
-| `structural/` | 结构型模式：adapter、bridge、composite、decorator、facade、flyweight、proxy |
-| `behavioral/` | 行为型模式：strategy、observer、command、iterator、template 等 |
-| `context-pattern/` | Context 模式 |
+```
+manfred.exercises.design.creational.<pattern>/   ← 创建型：singleton、factory、builder 等
+manfred.exercises.design.structural.<pattern>/   ← 结构型：adapter、decorator、proxy 等
+manfred.exercises.design.behavioral.<pattern>/   ← 行为型：strategy、observer、command 等
+manfred.exercises.design.context/                ← Context 模式
+```
 
 ## For AI Agents
 
 ### Working In This Directory
 
-- 包名格式：`manfred.exercises.design.<pattern-category>.<pattern-name>`
-  - 示例：`manfred.exercises.design.creational.singleton`
-- 每个模式一个包，包含 Demo 类（main 方法）和相关模型/实现类
+- 每个模式一个子包，包含 Demo 类（main 方法）和相关模型/实现类
+- 演示类命名：`XxxDemo`（有 main 方法）
+- 所有 public 类必须有中文类级 Javadoc
 
 ### Testing Requirements
 
 ```bash
-mvn clean compile -pl design-patterns/creational -Dsort.skip=true
-mvn clean compile -pl design-patterns/structural -Dsort.skip=true
-mvn clean compile -pl design-patterns/behavioral -Dsort.skip=true
+mvn clean compile -pl design-patterns -Dsort.skip=true
+mvn clean test -pl design-patterns -Dsort.skip=true
 ```
 
 <!-- MANUAL: -->
